@@ -39,10 +39,12 @@ const modules = [
 ]
 
 @NgModule({
-  declarations: [...modules],
+  declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    ...modules
   ],
-  exports: [...modules]
+  exports: [...modules],
+  providers: [MatDatepickerModule]
 })
 export class MaterialModule { }
