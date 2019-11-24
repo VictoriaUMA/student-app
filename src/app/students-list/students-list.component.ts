@@ -9,25 +9,20 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./students-list.component.css']
 })
 export class StudentsListComponent implements OnInit {
-
-  studentData: any = [];
-  dataSource: MatTableDataSource<Student>;
-  displayedColumns: string[] = ['_id', 'student_name', 'student_email', 'section', 'action'];
+  dataSource = new MatTableDataSource<Student>([]);
+  displayedColumns: string[] = ['student_name', 'student_email', 'action'];
 
   constructor(private studentService: StudentService) { }
 
   ngOnInit() {
-    this.studentData = this.studentService.GetStudents();
-    console.log('studentData ->', this.studentData);
-    
+    this.dataSource.data = this.studentService.students;
   }
 
-  deleteStudent(index: number, e){
-    if(window.confirm('Are you sure')) {
-      var data = this.dataSource.data;
-//      this.studentService.DeleteStudent(data._id);
-      data = this.studentService.GetStudents();
-      this.dataSource.data = data;
+  deleteStudent(index, e) {
+    if (window.confirm('Are you sure')) {
+      this.studentService.DeleteStudent(index);
+
+      this.dataSource.data = this.studentService.students;
     }
   }
 }

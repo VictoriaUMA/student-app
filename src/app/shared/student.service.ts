@@ -13,44 +13,25 @@ export class StudentService {
    }
 
   // Add student
-  AddStudent(data: Student) {
-    this.students.push(data);
-  }
-
-  // Get all students
-  GetStudents(): Student[] {
-    return this.students;
+  AddStudent(id, student_name, student_email,  dob, gender) {
+    let student = new Student({_id: id, student_name, student_email,  dob, gender});
+    this.students.push(student);
   }
 
   // Get student
   GetStudent(id): Student {
-    this.students.forEach(student => {
-      if (student._id = id){
-        return student;
-      }
-    });
-    return null;
+    return this.students[id];
   }
 
   // Update student
-  UpdateStudent(id, data) {
-    this.students.forEach( (student, index) => {
-      if (student._id === id){
-        this.students[index] = data;
-      }
-    });
+  UpdateStudent(id, student: Student) {
+    this.students[id]=student;
   }
 
   // Delete student
   DeleteStudent(id) {
-    const index = null;
-    this.students.forEach( (student, index) => {
-      if (student._id === id){
-        index = index;
-      }
-    });
-    if (index !== null){
-      this.students.splice(index,1);
-    }
+    
+    this.students.splice(id,1);
+    
   }
 }

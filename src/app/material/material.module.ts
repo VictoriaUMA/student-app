@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule,
+import {
+  MatButtonModule,
   MatToolbarModule,
   MatIconModule,
   MatSidenavModule,
@@ -16,7 +17,9 @@ import { MatButtonModule,
   MatChipsModule,
   MatTooltipModule,
   MatTableModule,
-  MatPaginatorModule } from '@angular/material';
+  MatPaginatorModule,
+  MatCardModule
+} from '@angular/material';
 
 const modules = [
   MatButtonModule,
@@ -35,7 +38,8 @@ const modules = [
   MatChipsModule,
   MatTooltipModule,
   MatTableModule,
-  MatPaginatorModule
+  MatPaginatorModule, 
+  MatCardModule
 ]
 
 @NgModule({

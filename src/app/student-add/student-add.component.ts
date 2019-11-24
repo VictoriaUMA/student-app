@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { StudentService } from '../shared/student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-add',
@@ -9,23 +9,27 @@ import { StudentService } from '../shared/student.service';
 })
 export class StudentAddComponent implements OnInit {
 
-  studentForm: FormGroup;
+  student_name: String;
+  student_email: String;
+  dob: Date;
+  gender: String;
 
-  constructor(public fb: FormBuilder,
-    private studentApi: StudentService) { }
+  constructor(
+    private router: Router,
+    private studentApi: StudentService
+  ) { }
 
   ngOnInit() {
+    this.student_name = null;
+    this.student_email = null;
+    this.dob = null;
+    this.gender = null;
   }
 
-  createForm(){
-    this.studentForm = this.fb.group({
-      student_name: ['', [Validators.required]],
-      student_email: ['', [Validators.required]],
-      section: ['', [Validators.required]],
-      subjects: [''],
-      dob: ['', [Validators.required]],
-      gender: ['Male']
-    })
+  submitStudentForm() {
+    this.studentApi.AddStudent(null, this.student_name, this.student_email, this.dob, this.gender);
+    this.router.navigateByUrl('')
+
   }
 
 }

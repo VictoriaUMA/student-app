@@ -1,6 +1,6 @@
 <!-- Title group  -->
 <div class="title-group">
-  <h1 class="mat-h1">Add Student</h1>
+  <h1 class="mat-h1">Edit Student</h1>
   <mat-divider fxFlex="1 0"></mat-divider>
 </div>
 
@@ -18,8 +18,8 @@
 
       <!-- Email -->
       <mat-form-field>
-        <input matInput placeholder="Student email" [(ngModel)]="student_email" id="student_email" name="student_email"
-          minlength="3" required>
+        <input matInput placeholder="Student email" [(ngModel)]="student.student_email" id="student_email"
+          name="student_email" minlength="3" required>
       </mat-form-field>
 
     </mat-card>
@@ -29,8 +29,8 @@
       <div class="controlers-wrapper">
         <!-- Date of birth -->
         <mat-form-field>
-          <input matInput readonly [matDatepicker]="picker" placeholder="Date of birth" [(ngModel)]="dob" id="dob"
-            name="dob">
+          <input matInput readonly [matDatepicker]="picker" placeholder="Date of birth" [(ngModel)]="student.dob"
+            id="dob" name="dob">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -38,7 +38,7 @@
         <!-- Gender -->
         <div class="misc-bottom-padding">
           <mat-label>Gender:</mat-label>
-          <mat-select [(value)]="gender" required>
+          <mat-select [(value)]="student.gender">
             <mat-option value="Hombre">Hombre</mat-option>
             <mat-option value="Mujer">Mujer</mat-option>
             <mat-option value="Otro">Otro</mat-option>
